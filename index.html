@@ -29,7 +29,8 @@
   body{ margin:0; min-width:320px; background:var(--primer); color:var(--ink);
     font-family:"Schibsted Grotesk",sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
   ::selection{ background:var(--finish); color:#f6efe6; }
-  a{ color:inherit; } a:hover{ color:var(--finish); } img{ display:block; }
+  a{ color:inherit; } a:hover{ color:var(--finish-deep); } img{ display:block; }
+  .band-dark a:hover, header.site a:hover, footer.site a:hover{ color:var(--paper); }
   :focus{ outline:none; } :focus-visible{ outline:2px solid var(--finish); outline-offset:3px; }
   .display{ font-family:Archivo,sans-serif; font-variation-settings:"wdth" 125; font-weight:800;
     text-transform:uppercase; line-height:0.92; letter-spacing:0.002em; margin:0; }
@@ -43,7 +44,7 @@
   .section-title{ border-top:1px solid var(--rule); padding-top:14px; margin-bottom:20px; }
   .btn{ display:inline-block; text-decoration:none; cursor:pointer; text-align:center;
     font-family:Archivo,sans-serif; font-size:15px; font-weight:600; padding:18px 32px; border:none; }
-  .btn-finish{ color:#f6efe6; background:linear-gradient(180deg,var(--finish),var(--finish-deep)); }
+  .btn-finish{ color:#f6efe6; background:var(--finish-deep); background:linear-gradient(180deg,var(--finish-deep),color-mix(in srgb,var(--finish-deep) 78%,#17191B)); }
   .btn-finish:hover{ color:#fff; }
 
   /* header */
@@ -152,11 +153,6 @@
   @keyframes lbCourse{ from{ transform:scaleX(1);} to{ transform:scaleX(0);} }
   @keyframes lbSweep{ from{ transform:translateX(-100%);} to{ transform:translateX(100%);} }
   @keyframes lbZoom{ from{ transform:scale(1.06);} to{ transform:none;} }
-  @keyframes lbSeat{ 0%{ opacity:0; } 25%{ opacity:1; } 100%{ opacity:0; } }
-  .hero .flash{ position:absolute; left:0; right:0; height:1px; background:rgba(255,255,255,0.9); opacity:0; z-index:2; }
-  .hero .flash:nth-child(1){ top:33.4%; animation:lbSeat 260ms linear 1185ms both; }
-  .hero .flash:nth-child(2){ top:66.7%; animation:lbSeat 260ms linear 1325ms both; }
-  .hero .flash:nth-child(3){ top:calc(100% - 1px); animation:lbSeat 260ms linear 1465ms both; }
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
     *,*::before,*::after{ animation:none !important; transition:none !important; }
@@ -184,10 +180,9 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
-    <img src="hero-volume.jpg" alt="Woodgrain aluminum cladding wrapping a cantilevered building volume against a clear sky" fetchpriority="high">
+    <img src="assets/hero-volume.jpg" alt="Woodgrain aluminum cladding wrapping a cantilevered building volume against a clear sky" fetchpriority="high">
     <div class="scrim" aria-hidden="true"></div>
     <div aria-hidden="true"><div class="course"></div><div class="course"></div><div class="course"></div></div>
-    <div aria-hidden="true"><div class="flash"></div><div class="flash"></div><div class="flash"></div></div>
     <div class="content">
       <div class="container">
         <h1 class="display">
@@ -214,15 +209,15 @@
   <section class="container" style="padding-bottom:var(--sec);" aria-label="The product at three distances">
     <div class="grid-3">
       <figure data-reveal style="margin:0;">
-        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="macro-siding.jpg" alt="Close view of woodgrain aluminum boards meeting at a corner" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="assets/macro-siding.jpg" alt="Close view of woodgrain aluminum boards meeting at a corner" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
         <figcaption class="spec" style="margin-top:14px; font-size:13.5px;">The grain</figcaption>
       </figure>
       <figure data-reveal style="margin:0;">
-        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="wall-window.jpg" alt="Woodgrain panel beside a corner window reflecting sky" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="assets/wall-window.jpg" alt="Woodgrain panel beside a corner window reflecting sky" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
         <figcaption class="spec" style="margin-top:14px; font-size:13.5px;">The wall</figcaption>
       </figure>
       <figure data-reveal style="margin:0;">
-        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="canopy.jpg" alt="Civic building with woodgrain soffit canopy and V-columns at dusk" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="assets/canopy.jpg" alt="Civic building with woodgrain soffit canopy and V-columns at dusk" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
         <figcaption class="spec" style="margin-top:14px; font-size:13.5px;">The architecture</figcaption>
       </figure>
     </div>
@@ -299,7 +294,7 @@
     </div>
 
     <article class="feature" data-reveal style="margin-bottom:64px;">
-      <div class="f-img"><img src="alberni-dusk.jpg" alt="The Alberni Tower at dusk, its twisting facade in woodgrain aluminum rising over Alberni Street" loading="lazy" style="object-position: 50% 30%;"></div>
+      <div class="f-img"><img src="assets/alberni-dusk.jpg" alt="The Alberni Tower at dusk, its twisting facade in woodgrain aluminum rising over Alberni Street" loading="lazy" style="object-position: 50% 30%;"></div>
       <div class="f-body">
         <span class="spec" style="display:block; margin-bottom:12px;">Flagship</span>
         <h3 class="h-section" style="font-size:clamp(24px,3vw,40px);">The Alberni Tower</h3>
