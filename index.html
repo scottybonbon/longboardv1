@@ -5,11 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Longboard® Architectural Products — Wood's Soul. Aluminum's Spine.</title>
 <meta name="description" content="Extruded aluminum cladding, siding, soffit and ceilings with sublimated woodgrain finishes. Designed, extruded, finished and shipped from British Columbia. Samples ship in 2 weeks.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta property="og:title" content="Longboard® — Wood's Soul. Aluminum's Spine.">
-<meta property="og:description" content="Extruded aluminum cladding, siding, soffit and ceilings with sublimated woodgrain finishes. Designed, extruded, finished and shipped from British Columbia.">
-<meta property="og:type" content="website">
-<!-- TODO before launch: set og:image to an absolute URL, e.g. https://<domain>/assets/hero-volume.jpg -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400&family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -138,6 +133,10 @@
   .grid-3{ display:grid; grid-template-columns:1fr; gap:24px; }
   @media (min-width:720px){ .grid-3{ grid-template-columns:1fr 1fr 1fr; } }
 
+  /* mission */
+  .mission-grid{ display:grid; grid-template-columns:1fr; gap:24px; }
+  @media (min-width:900px){ .mission-grid{ grid-template-columns:1fr 1fr; gap:48px; align-items:start; } }
+
   /* contact */
   .contact-grid{ display:grid; grid-template-columns:1fr; gap:48px 24px; }
   @media (min-width:900px){ .contact-grid{ grid-template-columns:1.4fr 1fr; align-items:end; } }
@@ -191,13 +190,11 @@
     <div aria-hidden="true"><div class="flash"></div><div class="flash"></div><div class="flash"></div></div>
     <div class="content">
       <div class="container">
-        <span class="fade" style="display:block; font-family:'IBM Plex Mono',monospace; font-size:13px; color:rgba(245,244,242,0.8); margin-bottom:22px; animation-delay:1.3s;">Designed, extruded, finished and shipped from British Columbia.</span>
         <h1 class="display">
           <span class="line"><span style="animation-delay:0.9s;">Wood&rsquo;s soul.</span></span>
           <span class="line"><span style="animation-delay:1.04s;">Aluminum&rsquo;s spine.</span></span>
         </h1>
-        <p class="fade" style="margin:22px 0 0; font-size:clamp(16px,1.9vw,22px); font-weight:500; line-height:1.4; max-width:30em; animation-delay:1.2s;">Real wood looks like this for five years. <span style="color:#e2b98a;">This looks like this for fifty.</span></p>
-        <span class="spec fade" style="display:block; margin-top:26px; color:rgba(245,244,242,0.7); animation-delay:1.5s;">Red Lion Hotel — Tongue &amp; Groove cladding, 24' boards</span>
+        <p class="fade" style="margin:22px 0 0; font-size:clamp(16px,1.9vw,22px); font-weight:500; line-height:1.4; max-width:30em; animation-delay:1.2s;">Real wood looks like this for five years. <span style="color:#e2b98a;">Ours looks like this for fifty.</span></p>
       </div>
     </div>
   </section>
@@ -207,8 +204,9 @@
     <div class="section-title" data-reveal>
       <h2 id="mission-h" class="h-section">Inspiring architectural products for thoughtful spaces</h2>
     </div>
-    <div data-reveal style="display:grid; gap:24px; grid-template-columns:1fr;">
-      <p class="lede">Longboard® makes interior and exterior extruded aluminum products wearing sublimated woodgrain finishes — non-combustible, VOC-free, Red List free, 100% recyclable. Every product is designed, extruded, powder-coated, sublimated, packaged and shipped from one 350,000 sq. ft. building in Abbotsford, BC.</p>
+    <div class="mission-grid" data-reveal>
+      <p class="lede">Longboard® makes interior and exterior extruded aluminum products wearing sublimated woodgrain finishes — non-combustible, VOC-free, Red List free, 100% recyclable.</p>
+      <p class="lede">Every product is designed, extruded, powder-coated, sublimated, packaged and shipped from one 350,000 sq. ft. building in Abbotsford, BC.</p>
     </div>
   </section>
 
@@ -235,7 +233,7 @@
     <div class="section-title" data-reveal>
       <h2 id="apps-h" class="h-section">Where it goes</h2>
     </div>
-    <p class="lede" data-reveal style="margin-bottom:40px;">Seven applications, one catalogue. Full product pages are returning with the new site — specifications and install guides are available today by phone or email.</p>
+    <p class="lede" data-reveal style="margin-bottom:40px;">Seven applications, one catalogue. Specifications and install guides are a call away.</p>
     <div data-reveal>
       <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Cladding</span><span class="cell" data-label="Set">Exterior</span><span class="cell" data-label="Systems">Tongue &amp; Groove · Link &amp; Lock™ · HITCH™ anchor</span></div>
       <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Siding</span><span class="cell" data-label="Set">Exterior</span><span class="cell" data-label="Systems">4" &amp; 6" V-Groove, 6" Channel — planks to 24'</span></div>
@@ -267,7 +265,7 @@
       <h2 id="fin-h" class="h-section">Fifty finishes. One accent.</h2>
     </div>
     <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap; margin-bottom:48px;">
-      <p class="lede" data-reveal>Sublimated woodgrain on extruded aluminum — 50+ standard finishes, AAMA 2604/2605, 15 and 20-year finish warranties, custom RAL matching in 200+ colors. Select one and the page re-coats itself.</p>
+      <p class="lede" data-reveal>50+ standard finishes — sublimated woodgrain on extruded aluminum. Select one and the page re-coats itself.</p>
       <div data-reveal role="group" aria-label="Finish switcher" style="display:flex; flex-wrap:wrap; gap:12px;">
         <button class="finish-btn" data-k="cherry" aria-pressed="false"><span class="sw" style="background:linear-gradient(#d98e55,#8a4a24);"></span>Light Cherry</button>
         <button class="finish-btn" data-k="walnut" aria-pressed="true"><span class="sw" style="background:linear-gradient(#b07e4e,#684226);"></span>National Walnut</button>
@@ -279,7 +277,7 @@
       <div class="sweep" id="sweep" aria-hidden="true"></div>
       <span class="spec" style="position:absolute; left:24px; bottom:18px; font-size:12.5px; color:rgba(255,255,255,0.85); z-index:3;"><span id="fname">National Walnut</span> — 6" board, sublimated grain</span>
     </div>
-    <p class="spec" data-reveal style="margin-top:20px; max-width:64ch;">A screen can&rsquo;t render a sublimated finish. Samples are cut from actual profiles — 1–2 days processing, popular finishes ship in 2 weeks. <a href="mailto:info@longboardproducts.com?subject=Sample%20request">Request samples →</a></p>
+    <p class="spec" data-reveal style="margin-top:20px; max-width:64ch;">Samples are cut from actual profiles — popular finishes ship in 2 weeks. <a href="mailto:info@longboardproducts.com?subject=Sample%20request">Request samples →</a></p>
   </section>
 
   <!-- PROOF -->
@@ -321,9 +319,7 @@
       <div class="index-row"><span class="h-index">Point Grey Residence</span><span class="cell" data-label="Location">Vancouver, BC</span><span class="cell" data-label="Architect">Battersby Howat</span><span class="cell" data-label="Product">6" Smooth siding</span><span class="cell cell-end" data-label="Finish">Dark Fir</span></div>
       <div class="index-row"><span class="h-index">The Brixton</span><span class="cell" data-label="Location">Toronto, ON</span><span class="cell" data-label="Architect">Studio JCI</span><span class="cell" data-label="Product">Link &amp; Lock™ fins</span><span class="cell cell-end" data-label="Finish">Light Cherry</span></div>
       <div class="index-row"><span class="h-index">Senákw Phase 1</span><span class="cell" data-label="Location">Vancouver, BC</span><span class="cell" data-label="Architect">Revery Architecture</span><span class="cell" data-label="Product">6" V-Groove soffit</span><span class="cell cell-end" data-label="Finish">National Walnut</span></div>
-      <div class="index-row"><span class="h-index">Red Lion Hotel</span><span class="cell" data-label="Location">—</span><span class="cell" data-label="Architect">—</span><span class="cell" data-label="Product">T&amp;G cladding, 24' boards</span><span class="cell cell-end" data-label="Finish">—</span></div>
     </div>
-    <p class="spec" data-reveal style="margin-top:24px;">The full project gallery returns with the new site.</p>
   </section>
 
   <!-- CONTACT -->
@@ -332,7 +328,7 @@
       <div class="contact-grid">
         <div data-reveal>
           <h2 id="contact-h" class="display" style="font-variation-settings:'wdth' 122; font-size:clamp(36px,5.4vw,84px); line-height:0.96;">See it in<br>your hands.</h2>
-          <p style="margin:28px 0 0; font-size:15px; color:var(--paper-faint); max-width:44ch;">Screens can&rsquo;t render a sublimated finish. Hold one. Samples, specifications, install guides, Design Assist — one call or one email, answered by people in the building where it&rsquo;s made.</p>
+          <p style="margin:28px 0 0; font-size:15px; color:var(--paper-faint); max-width:44ch;">Screens can&rsquo;t render a sublimated finish. Hold one.</p>
         </div>
         <div data-reveal>
           <p style="margin:0 0 6px; font-size:15px;"><a href="tel:1-800-604-0343" style="text-decoration:none; color:var(--paper);">1-800-604-0343</a></p>
