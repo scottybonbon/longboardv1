@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-finish="walnut">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Longboard® Architectural Products — Wood's Soul. Aluminum's Spine.</title>
+<meta name="description" content="Extruded aluminum cladding, siding, soffit and ceilings with sublimated woodgrain finishes. Designed, extruded, finished and shipped from British Columbia. Samples ship in 2 weeks.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:title" content="Longboard® — Wood's Soul. Aluminum's Spine.">
+<meta property="og:description" content="Extruded aluminum cladding, siding, soffit and ceilings with sublimated woodgrain finishes. Designed, extruded, finished and shipped from British Columbia.">
+<meta property="og:type" content="website">
+<!-- TODO before launch: set og:image to an absolute URL, e.g. https://<domain>/assets/hero-volume.jpg -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400&family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* LONGBOARD V1 — single-file interim site. No dependencies, no build step,
+     no backend. Every number sourced from Longboard documentation. */
+  :root {
+    --primer:#EAE8E4; --ink:#17191B; --ink-soft:#514c45; --ink-faint:#8d867c;
+    --paper:#F5F4F2; --paper-faint:#9d968b;
+    --rule:rgba(23,25,27,0.35); --rule-light:rgba(23,25,27,0.14); --rule-paper:rgba(245,244,242,0.15);
+    --finish:#8a5b36; --finish-deep:#684226;
+    --pad:20px; --sec:88px;
+  }
+  @media (min-width:720px){ :root{ --pad:32px; --sec:120px; } }
+  @media (min-width:1024px){ :root{ --pad:48px; --sec:150px; } }
+  [data-finish="cherry"]{ --finish:#b06438; --finish-deep:#8a4a24; }
+  [data-finish="walnut"]{ --finish:#8a5b36; --finish-deep:#684226; }
+  [data-finish="fir"]{ --finish:#5d4630; --finish-deep:#41311f; }
+  [data-finish="slate"]{ --finish:#5b6670; --finish-deep:#414a53; }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; min-width:320px; background:var(--primer); color:var(--ink);
+    font-family:"Schibsted Grotesk",sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  ::selection{ background:var(--finish); color:#f6efe6; }
+  a{ color:inherit; } a:hover{ color:var(--finish); } img{ display:block; }
+  :focus{ outline:none; } :focus-visible{ outline:2px solid var(--finish); outline-offset:3px; }
+  .display{ font-family:Archivo,sans-serif; font-variation-settings:"wdth" 125; font-weight:800;
+    text-transform:uppercase; line-height:0.92; letter-spacing:0.002em; margin:0; }
+  .h-section{ font-family:Archivo,sans-serif; font-variation-settings:"wdth" 118; font-weight:700;
+    text-transform:uppercase; font-size:clamp(24px,3vw,36px); letter-spacing:0.01em; margin:0; }
+  .h-index{ font-family:Archivo,sans-serif; font-variation-settings:"wdth" 114; font-weight:700;
+    text-transform:uppercase; font-size:clamp(17px,1.6vw,22px); letter-spacing:0.02em; }
+  .lede{ font-size:17px; line-height:1.65; color:var(--ink-soft); max-width:52ch; margin:0; }
+  .spec{ font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-faint); }
+  .container{ max-width:1440px; margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }
+  .section-title{ border-top:1px solid var(--rule); padding-top:14px; margin-bottom:20px; }
+  .btn{ display:inline-block; text-decoration:none; cursor:pointer; text-align:center;
+    font-family:Archivo,sans-serif; font-size:15px; font-weight:600; padding:18px 32px; border:none; }
+  .btn-finish{ color:#f6efe6; background:linear-gradient(180deg,var(--finish),var(--finish-deep)); }
+  .btn-finish:hover{ color:#fff; }
+
+  /* header */
+  header.site{ position:fixed; top:0; left:0; right:0; z-index:50; background:transparent;
+    border-bottom:1px solid transparent; transition:background 0.4s,border-color 0.4s; }
+  header.site .container{ padding-top:14px; padding-bottom:14px; display:flex; align-items:center;
+    justify-content:space-between; gap:12px 20px; flex-wrap:wrap; }
+  .wordmark{ font-family:Archivo,sans-serif; font-variation-settings:"wdth" 125; font-weight:800;
+    font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; white-space:nowrap; transition:color 0.4s; }
+  .wordmark sup{ font-size:8px; font-weight:500; }
+  nav.site{ display:flex; gap:4px 20px; flex-wrap:wrap; }
+  nav.site a{ text-decoration:none; padding:6px 0; font-family:Archivo,sans-serif; font-size:13.5px; font-weight:500; transition:color 0.4s; }
+  .header-cta{ font-family:Archivo,sans-serif; font-size:13.5px; font-weight:600; text-decoration:none;
+    padding:11px 20px; white-space:nowrap; transition:background 0.4s,color 0.4s; }
+  header.site, header.site .wordmark, header.site nav.site a{ color:var(--paper); }
+  header.site .header-cta{ background:var(--paper); color:var(--ink); }
+  header.site.is-solid{ background:rgba(234,232,228,0.92); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border-bottom-color:rgba(23,25,27,0.12); }
+  header.site.is-solid .wordmark, header.site.is-solid nav.site a{ color:var(--ink); }
+  header.site.is-solid .header-cta{ background:var(--ink); color:var(--primer); }
+  @media (max-width:719px){ nav.site{ display:none; } }
+
+  /* hero */
+  .hero{ position:relative; height:96vh; min-height:560px; overflow:hidden; background:var(--ink); }
+  .hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 42%;
+    animation:lbZoom 2.4s cubic-bezier(0.22,1,0.36,1) 0.5s both; }
+  .hero .scrim{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(23,25,27,0.28),rgba(23,25,27,0) 40%,rgba(23,25,27,0.55) 84%); }
+  .hero .course{ position:absolute; left:0; right:0; background:var(--primer); transform-origin:right center; }
+  .hero .course:nth-child(1){ top:0; height:33.5%; animation:lbCourse 0.9s cubic-bezier(0.65,0,0.35,1) 0.35s both; }
+  .hero .course:nth-child(2){ top:33.3%; height:33.6%; animation:lbCourse 0.9s cubic-bezier(0.65,0,0.35,1) 0.49s both; }
+  .hero .course:nth-child(3){ top:66.6%; height:33.6%; animation:lbCourse 0.9s cubic-bezier(0.65,0,0.35,1) 0.63s both; }
+  .hero .content{ position:absolute; left:0; right:0; bottom:0; padding-bottom:52px; color:var(--paper); }
+  .hero h1{ font-size:clamp(40px,8.6vw,150px); }
+  @media (max-width:480px){ .hero h1{ font-size:clamp(36px,11.5vw,52px); } }
+  .hero .line{ display:block; overflow:hidden; padding-bottom:0.05em; margin-bottom:-0.05em; }
+  .hero .line>span{ display:block; animation:lbLine 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+  .fade{ animation:lbFade 0.8s ease both; }
+
+  /* index rows */
+  .index-head,.index-row{ display:grid; gap:10px 24px; align-items:baseline; }
+  .index-head{ padding:0 0 12px; border-bottom:1px solid var(--rule); font-family:"IBM Plex Mono",monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-faint); }
+  .index-row{ padding:20px 0; border-bottom:1px solid var(--rule-light); color:var(--ink); }
+  .index-row .cell{ font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--ink-soft); }
+  .cell-end{ text-align:right; }
+  @media (min-width:900px){ .index-head,.index-row{ grid-template-columns:var(--cols,2.2fr 1.2fr 1.4fr 1.2fr 1fr); } }
+  @media (max-width:899px){
+    .index-head{ display:none; }
+    .index-row{ grid-template-columns:1fr 1fr; }
+    .index-row .h-index{ grid-column:1 / -1; }
+    .cell-end{ text-align:left; }
+    .index-row .cell::before{ content:attr(data-label); display:block; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); }
+  }
+
+  /* stats */
+  .band-dark{ background:var(--ink); color:var(--paper); }
+  .stat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px 24px; }
+  @media (min-width:900px){ .stat-grid{ grid-template-columns:repeat(4,1fr); } }
+  .stat .num{ font-family:Archivo,sans-serif; font-variation-settings:"wdth" 120; font-weight:800; line-height:1; font-size:clamp(34px,4vw,54px); }
+  .stat p{ margin:12px 0 0; font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--paper-faint); line-height:1.6; }
+
+  /* finish switcher */
+  .finish-btn{ appearance:none; cursor:pointer; display:flex; align-items:center; gap:10px;
+    padding:11px 18px 11px 12px; background:transparent; white-space:nowrap;
+    font-family:Archivo,sans-serif; font-size:13.5px; font-weight:500; color:var(--ink);
+    border:1px solid rgba(23,25,27,0.2); transition:border-color 0.25s; }
+  .finish-btn:hover{ border-color:var(--ink); }
+  .finish-btn[aria-pressed="true"]{ border-color:var(--ink); }
+  .finish-btn .sw{ width:28px; height:15px; display:block; }
+  .grain{ display:block; position:relative; overflow:hidden; background:linear-gradient(180deg,var(--finish),var(--finish-deep)); }
+  .grain::after{ content:""; position:absolute; inset:-20%;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.28' numOctaves='4' seed='7'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.05 0 0 0 0 0.03 0 0 0 0 0.02 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='420' height='420' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size:420px 420px; mix-blend-mode:multiply; opacity:0.5; pointer-events:none; }
+  .sweep{ position:absolute; inset:0; pointer-events:none; z-index:2;
+    background:linear-gradient(100deg,rgba(255,255,255,0) 32%,rgba(255,255,255,0.3) 50%,rgba(255,255,255,0) 68%); transform:translateX(-100%); }
+  .sweep.on{ animation:lbSweep 1s cubic-bezier(0.4,0,0.2,1) both; }
+
+  /* alberni feature */
+  .feature{ border:1px solid var(--rule); background:var(--paper); }
+  .feature .f-img{ aspect-ratio:16/8; overflow:hidden; }
+  .feature img{ width:100%; height:100%; object-fit:cover; }
+  .feature .f-body{ padding:24px 24px 40px; }
+  .titleblock{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px 24px; border-top:1px solid var(--rule); margin-top:24px; padding-top:24px; }
+  @media (min-width:900px){ .titleblock{ grid-template-columns:repeat(4,1fr); } }
+  .titleblock .tb-l{ display:block; font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); }
+  .titleblock .tb-v{ font-family:"IBM Plex Mono",monospace; font-size:13px; }
+
+  /* three distances */
+  .grid-3{ display:grid; grid-template-columns:1fr; gap:24px; }
+  @media (min-width:720px){ .grid-3{ grid-template-columns:1fr 1fr 1fr; } }
+
+  /* contact */
+  .contact-grid{ display:grid; grid-template-columns:1fr; gap:48px 24px; }
+  @media (min-width:900px){ .contact-grid{ grid-template-columns:1.4fr 1fr; align-items:end; } }
+
+  footer.site{ background:var(--ink); color:var(--paper-faint); border-top:1px solid rgba(245,244,242,0.1); }
+  footer.site .container{ padding-top:40px; padding-bottom:40px; display:flex; justify-content:space-between;
+    align-items:center; gap:24px; flex-wrap:wrap; font-family:Archivo,sans-serif; font-size:13px; }
+
+  [data-reveal]{ opacity:0; transform:translateY(22px); }
+  [data-reveal].in{ opacity:1; transform:none; transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  @keyframes lbLine{ from{ transform:translateY(112%);} to{ transform:none;} }
+  @keyframes lbFade{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none;} }
+  @keyframes lbCourse{ from{ transform:scaleX(1);} to{ transform:scaleX(0);} }
+  @keyframes lbSweep{ from{ transform:translateX(-100%);} to{ transform:translateX(100%);} }
+  @keyframes lbZoom{ from{ transform:scale(1.06);} to{ transform:none;} }
+  @keyframes lbSeat{ 0%{ opacity:0; } 25%{ opacity:1; } 100%{ opacity:0; } }
+  .hero .flash{ position:absolute; left:0; right:0; height:1px; background:rgba(255,255,255,0.9); opacity:0; z-index:2; }
+  .hero .flash:nth-child(1){ top:33.4%; animation:lbSeat 260ms linear 1185ms both; }
+  .hero .flash:nth-child(2){ top:66.7%; animation:lbSeat 260ms linear 1325ms both; }
+  .hero .flash:nth-child(3){ top:calc(100% - 1px); animation:lbSeat 260ms linear 1465ms both; }
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation:none !important; transition:none !important; }
+    [data-reveal]{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site" id="hdr">
+  <div class="container">
+    <a class="wordmark" href="#top">Longboard<sup>®</sup></a>
+    <nav class="site" aria-label="Sections">
+      <a href="#catalogue">Applications</a>
+      <a href="#systems">Systems</a>
+      <a href="#finishes">Finishes</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="mailto:info@longboardproducts.com?subject=Sample%20request">Order samples</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+    <img src="assets/hero-volume.jpg" alt="Woodgrain aluminum cladding wrapping a cantilevered building volume against a clear sky" fetchpriority="high">
+    <div class="scrim" aria-hidden="true"></div>
+    <div aria-hidden="true"><div class="course"></div><div class="course"></div><div class="course"></div></div>
+    <div aria-hidden="true"><div class="flash"></div><div class="flash"></div><div class="flash"></div></div>
+    <div class="content">
+      <div class="container">
+        <span class="fade" style="display:block; font-family:'IBM Plex Mono',monospace; font-size:13px; color:rgba(245,244,242,0.8); margin-bottom:22px; animation-delay:1.3s;">Designed, extruded, finished and shipped from British Columbia.</span>
+        <h1 class="display">
+          <span class="line"><span style="animation-delay:0.9s;">Wood&rsquo;s soul.</span></span>
+          <span class="line"><span style="animation-delay:1.04s;">Aluminum&rsquo;s spine.</span></span>
+        </h1>
+        <p class="fade" style="margin:22px 0 0; font-size:clamp(16px,1.9vw,22px); font-weight:500; line-height:1.4; max-width:30em; animation-delay:1.2s;">Real wood looks like this for five years. <span style="color:#e2b98a;">This looks like this for fifty.</span></p>
+        <span class="spec fade" style="display:block; margin-top:26px; color:rgba(245,244,242,0.7); animation-delay:1.5s;">Red Lion Hotel — Tongue &amp; Groove cladding, 24' boards</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="container" style="padding-top:var(--sec); padding-bottom:var(--sec);" aria-labelledby="mission-h">
+    <div class="section-title" data-reveal>
+      <h2 id="mission-h" class="h-section">Inspiring architectural products for thoughtful spaces</h2>
+    </div>
+    <div data-reveal style="display:grid; gap:24px; grid-template-columns:1fr;">
+      <p class="lede">Longboard® makes interior and exterior extruded aluminum products wearing sublimated woodgrain finishes — non-combustible, VOC-free, Red List free, 100% recyclable. Every product is designed, extruded, powder-coated, sublimated, packaged and shipped from one 350,000 sq. ft. building in Abbotsford, BC.</p>
+    </div>
+  </section>
+
+  <!-- THREE DISTANCES -->
+  <section class="container" style="padding-bottom:var(--sec);" aria-label="The product at three distances">
+    <div class="grid-3">
+      <figure data-reveal style="margin:0;">
+        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="assets/macro-siding.jpg" alt="Close view of woodgrain aluminum boards meeting at a corner" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
+        <figcaption class="spec" style="margin-top:14px; font-size:13.5px;">The grain</figcaption>
+      </figure>
+      <figure data-reveal style="margin:0;">
+        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="assets/wall-window.jpg" alt="Woodgrain panel beside a corner window reflecting sky" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
+        <figcaption class="spec" style="margin-top:14px; font-size:13.5px;">The wall</figcaption>
+      </figure>
+      <figure data-reveal style="margin:0;">
+        <div style="aspect-ratio:3/4; overflow:hidden;"><img src="assets/canopy.jpg" alt="Civic building with woodgrain soffit canopy and V-columns at dusk" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></div>
+        <figcaption class="spec" style="margin-top:14px; font-size:13.5px;">The architecture</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section id="catalogue" class="container" style="padding-bottom:var(--sec);" aria-labelledby="apps-h">
+    <div class="section-title" data-reveal>
+      <h2 id="apps-h" class="h-section">Where it goes</h2>
+    </div>
+    <p class="lede" data-reveal style="margin-bottom:40px;">Seven applications, one catalogue. Full product pages are returning with the new site — specifications and install guides are available today by phone or email.</p>
+    <div data-reveal>
+      <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Cladding</span><span class="cell" data-label="Set">Exterior</span><span class="cell" data-label="Systems">Tongue &amp; Groove · Link &amp; Lock™ · HITCH™ anchor</span></div>
+      <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Siding</span><span class="cell" data-label="Set">Exterior</span><span class="cell" data-label="Systems">4" &amp; 6" V-Groove, 6" Channel — planks to 24'</span></div>
+      <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Soffit</span><span class="cell" data-label="Set">Exterior</span><span class="cell" data-label="Systems">Tongue &amp; Groove soffit panels</span></div>
+      <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Screens &amp; Enclosures</span><span class="cell" data-label="Set">Exterior</span><span class="cell" data-label="Systems">Link &amp; Lock™ battens, fins, privacy beams</span></div>
+      <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Ceilings</span><span class="cell" data-label="Set">Interior</span><span class="cell" data-label="Systems">Endura linear · Intrepid Beam · Dauntless baffles</span></div>
+      <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Interior Walls</span><span class="cell" data-label="Set">Interior</span><span class="cell" data-label="Systems">T&amp;G planks — interior-only finishes available</span></div>
+      <div class="index-row" style="--cols:2fr 1fr 2.2fr;"><span class="h-index">Acoustic Solutions</span><span class="cell" data-label="Set">Interior</span><span class="cell" data-label="Systems">Dauntless (NRC up to 0.79) · Endura perforated + Soundtex</span></div>
+    </div>
+  </section>
+
+  <!-- SYSTEMS -->
+  <section id="systems" class="container" style="padding-bottom:var(--sec);" aria-labelledby="sys-h">
+    <div class="section-title" data-reveal>
+      <h2 id="sys-h" class="h-section">How it works</h2>
+    </div>
+    <div data-reveal>
+      <div class="index-row" style="--cols:2fr 3.2fr;"><span class="h-index">HITCH™</span><span class="cell" data-label="Spec">Passive House Institute certified façade anchor — up to 94% thermal efficiency at standard 32"×48" spacing, effective R-values above R60, 1"–16" continuous insulation, up to 50% fewer clips</span></div>
+      <div class="index-row" style="--cols:2fr 3.2fr;"><span class="h-index">Link &amp; Lock™</span><span class="cell" data-label="Spec">Hidden-fastener system — two-piece battens, matching end caps, multiple orientations, across cladding, screens, beams and ceilings</span></div>
+      <div class="index-row" style="--cols:2fr 3.2fr;"><span class="h-index">Tongue &amp; Groove</span><span class="cell" data-label="Spec">Premium linear planks — 12' or 24' lengths, 1/16" base metal, on-site or prefab fabrication, performs in all seismic categories</span></div>
+      <div class="index-row" style="--cols:2fr 3.2fr;"><span class="h-index">Dauntless</span><span class="cell" data-label="Spec">Suspended baffle system — open-joint aesthetic, clip-and-rail install, NRC up to 0.79, easy MEP access</span></div>
+    </div>
+    <p class="spec" data-reveal style="margin-top:24px;">Non-combustible: CAN/ULC S114, ASTM E136 · Class A: ASTM E2768-11 · ICC ESR-4183/4184 · ISO 9001/14001</p>
+  </section>
+
+  <!-- FINISHES -->
+  <section id="finishes" class="container" style="padding-bottom:var(--sec);" aria-labelledby="fin-h">
+    <div class="section-title" data-reveal>
+      <h2 id="fin-h" class="h-section">Fifty finishes. One accent.</h2>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap; margin-bottom:48px;">
+      <p class="lede" data-reveal>Sublimated woodgrain on extruded aluminum — 50+ standard finishes, AAMA 2604/2605, 15 and 20-year finish warranties, custom RAL matching in 200+ colors. Select one and the page re-coats itself.</p>
+      <div data-reveal role="group" aria-label="Finish switcher" style="display:flex; flex-wrap:wrap; gap:12px;">
+        <button class="finish-btn" data-k="cherry" aria-pressed="false"><span class="sw" style="background:linear-gradient(#d98e55,#8a4a24);"></span>Light Cherry</button>
+        <button class="finish-btn" data-k="walnut" aria-pressed="true"><span class="sw" style="background:linear-gradient(#b07e4e,#684226);"></span>National Walnut</button>
+        <button class="finish-btn" data-k="fir" aria-pressed="false"><span class="sw" style="background:linear-gradient(#83643f,#41311f);"></span>Dark Fir</button>
+        <button class="finish-btn" data-k="slate" aria-pressed="false"><span class="sw" style="background:linear-gradient(#8b979f,#414a53);"></span>Slate</button>
+      </div>
+    </div>
+    <div class="grain" data-reveal style="position:relative; height:300px;">
+      <div class="sweep" id="sweep" aria-hidden="true"></div>
+      <span class="spec" style="position:absolute; left:24px; bottom:18px; font-size:12.5px; color:rgba(255,255,255,0.85); z-index:3;"><span id="fname">National Walnut</span> — 6" board, sublimated grain</span>
+    </div>
+    <p class="spec" data-reveal style="margin-top:20px; max-width:64ch;">A screen can&rsquo;t render a sublimated finish. Samples are cut from actual profiles — 1–2 days processing, popular finishes ship in 2 weeks. <a href="mailto:info@longboardproducts.com?subject=Sample%20request">Request samples →</a></p>
+  </section>
+
+  <!-- PROOF -->
+  <section class="band-dark" aria-label="Proof">
+    <div class="container" style="padding-top:96px; padding-bottom:96px;">
+      <div class="stat-grid">
+        <div class="stat" data-reveal><div class="num">94%</div><p>Thermal efficiency with HITCH™</p></div>
+        <div class="stat" data-reveal><div class="num">50 yr</div><p>Structural warranty, non-pro-rated — includes removal &amp; reinstallation costs</p></div>
+        <div class="stat" data-reveal><div class="num">2 wks</div><p>Popular finishes, ready to ship</p></div>
+        <div class="stat" data-reveal><div class="num">6×</div><p>Lower-carbon Canadian aluminum, ~96% hydroelectric</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="container" style="padding-top:var(--sec); padding-bottom:var(--sec);" aria-labelledby="proj-h">
+    <div class="section-title" data-reveal style="margin-bottom:48px;">
+      <h2 id="proj-h" class="h-section">Selected work</h2>
+    </div>
+
+    <article class="feature" data-reveal style="margin-bottom:64px;">
+      <div class="f-img"><img src="assets/alberni-dusk.jpg" alt="The Alberni Tower at dusk, its twisting facade in woodgrain aluminum rising over Alberni Street" loading="lazy" style="object-position: 50% 30%;"></div>
+      <div class="f-body">
+        <span class="spec" style="display:block; margin-bottom:12px;">Flagship</span>
+        <h3 class="h-section" style="font-size:clamp(24px,3vw,40px);">The Alberni Tower</h3>
+        <p class="lede" style="margin-top:16px;">Kengo Kuma&rsquo;s first Canadian tower asked for wood where wood couldn&rsquo;t go: curved, high, and exposed for decades. The answer was 26,000+ linear feet of custom Longboard extrusion — designed, extruded and finished in Abbotsford.</p>
+        <div class="titleblock">
+          <div><span class="tb-l">Location</span><span class="tb-v">Vancouver, BC</span></div>
+          <div><span class="tb-l">Architect</span><span class="tb-v">Kengo Kuma &amp; Associates</span></div>
+          <div><span class="tb-l">Product</span><span class="tb-v">Custom extrusion — 26,000+ lin. ft.</span></div>
+          <div><span class="tb-l">Finish</span><span class="tb-v">National Walnut</span></div>
+        </div>
+      </div>
+    </article>
+
+    <div data-reveal>
+      <div class="index-head" aria-hidden="true"><span>Project</span><span>Location</span><span>Architect</span><span>Product</span><span class="cell-end">Finish</span></div>
+      <div class="index-row"><span class="h-index">Marine Gateway Pavilion</span><span class="cell" data-label="Location">Richmond, BC</span><span class="cell" data-label="Architect">Perkins&amp;Will</span><span class="cell" data-label="Product">4" V-Groove soffit</span><span class="cell cell-end" data-label="Finish">Light Cherry</span></div>
+      <div class="index-row"><span class="h-index">Point Grey Residence</span><span class="cell" data-label="Location">Vancouver, BC</span><span class="cell" data-label="Architect">Battersby Howat</span><span class="cell" data-label="Product">6" Smooth siding</span><span class="cell cell-end" data-label="Finish">Dark Fir</span></div>
+      <div class="index-row"><span class="h-index">The Brixton</span><span class="cell" data-label="Location">Toronto, ON</span><span class="cell" data-label="Architect">Studio JCI</span><span class="cell" data-label="Product">Link &amp; Lock™ fins</span><span class="cell cell-end" data-label="Finish">Light Cherry</span></div>
+      <div class="index-row"><span class="h-index">Senákw Phase 1</span><span class="cell" data-label="Location">Vancouver, BC</span><span class="cell" data-label="Architect">Revery Architecture</span><span class="cell" data-label="Product">6" V-Groove soffit</span><span class="cell cell-end" data-label="Finish">National Walnut</span></div>
+      <div class="index-row"><span class="h-index">Red Lion Hotel</span><span class="cell" data-label="Location">—</span><span class="cell" data-label="Architect">—</span><span class="cell" data-label="Product">T&amp;G cladding, 24' boards</span><span class="cell cell-end" data-label="Finish">—</span></div>
+    </div>
+    <p class="spec" data-reveal style="margin-top:24px;">The full project gallery returns with the new site.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="band-dark" aria-labelledby="contact-h">
+    <div class="container" style="padding-top:var(--sec); padding-bottom:var(--sec);">
+      <div class="contact-grid">
+        <div data-reveal>
+          <h2 id="contact-h" class="display" style="font-variation-settings:'wdth' 122; font-size:clamp(36px,5.4vw,84px); line-height:0.96;">See it in<br>your hands.</h2>
+          <p style="margin:28px 0 0; font-size:15px; color:var(--paper-faint); max-width:44ch;">Screens can&rsquo;t render a sublimated finish. Hold one. Samples, specifications, install guides, Design Assist — one call or one email, answered by people in the building where it&rsquo;s made.</p>
+        </div>
+        <div data-reveal>
+          <p style="margin:0 0 6px; font-size:15px;"><a href="tel:1-800-604-0343" style="text-decoration:none; color:var(--paper);">1-800-604-0343</a></p>
+          <p style="margin:0 0 6px; font-size:15px;"><a href="mailto:info@longboardproducts.com" style="text-decoration:none; color:var(--paper);">info@longboardproducts.com</a></p>
+          <p style="margin:0 0 28px; font-size:14px; color:var(--paper-faint);">1777 Clearbrook Road, Abbotsford, BC V2T 5X5</p>
+          <a class="btn btn-finish" href="mailto:info@longboardproducts.com?subject=Sample%20request&body=Finish(es)%20of%20interest%3A%0AProject%3A%0AShipping%20address%3A">Order samples →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="container">
+    <span class="wordmark" style="font-size:15px; color:var(--paper);">Longboard<sup>®</sup></span>
+    <span style="font-family:'Schibsted Grotesk',sans-serif; font-size:12.5px;">© 2026 Longboard® · A division of Mayne Inc. · Abbotsford, BC</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement;
+  var NAMES={cherry:"Light Cherry",walnut:"National Walnut",fir:"Dark Fir",slate:"Slate"};
+  d.querySelectorAll(".finish-btn").forEach(function(b){
+    b.addEventListener("click",function(){
+      var k=b.getAttribute("data-k");
+      root.setAttribute("data-finish",k);
+      d.querySelectorAll(".finish-btn").forEach(function(x){ x.setAttribute("aria-pressed", x===b?"true":"false"); });
+      d.getElementById("fname").textContent=NAMES[k];
+      var s=d.getElementById("sweep"); s.classList.remove("on"); void s.offsetWidth; s.classList.add("on");
+    });
+  });
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var els=[].slice.call(d.querySelectorAll("[data-reveal]"));
+  if(reduce||!("IntersectionObserver" in window)){ els.forEach(function(e){e.classList.add("in");}); }
+  else{
+    var io=new IntersectionObserver(function(en){ en.forEach(function(e){
+      if(e.isIntersecting||e.boundingClientRect.top<0){ e.target.classList.add("in"); io.unobserve(e.target); }
+    });},{threshold:0.12});
+    els.forEach(function(e){ io.observe(e); });
+    setTimeout(function(){ els.forEach(function(e){ if(e.getBoundingClientRect().top<innerHeight) e.classList.add("in"); }); },900);
+  }
+  var h=d.getElementById("hdr"), was=null;
+  function onS(){ var on=scrollY>innerHeight*0.7; if(on===was)return; was=on; h.classList.toggle("is-solid",on); }
+  addEventListener("scroll",onS,{passive:true}); onS();
+})();
+</script>
+</body>
+</html>
